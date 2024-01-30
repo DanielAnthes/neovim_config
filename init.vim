@@ -3,6 +3,7 @@ filetype plugin indent on
 syntax on
 
 call plug#begin()
+Plug 'loctvl842/monokai-pro.nvim'
 Plug 'morhetz/gruvbox'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'github/copilot.vim'
@@ -16,6 +17,9 @@ Plug 'preservim/nerdtree'
 Plug 'frazrepo/vim-rainbow'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'ryanoasis/vim-devicons'
+Plug 'psf/black', { 'branch': 'stable' }
 call plug#end()
 
 nnoremap <Leader>c :IPythonCellExecuteCell<CR>
@@ -28,9 +32,16 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
-let g:rainbow_active = 1
+augroup black_on_save
+  autocmd!
+  autocmd BufWritePre *.py Black
+augroup end
+
+let g:black_use_virtualenv = 0
+let g:rainbow_active = 0
 let g:ipython_cell_cell_command = "%paste"
 let g:python3_host_prog='/Users/daniel/miniconda3/envs/nvim/bin/python'
+let g:slime_target = "tmux"
 let g:slime_default_config = {
             \ 'socket_name': get(split($TMUX, ','), 0),
             \ 'target_pane': '{top-right}' }
@@ -39,13 +50,16 @@ let NERDTreeQuitOnOpen=1
 
 " GUI options especially for neovide 
 set guifont=Monaco:h14
-let g:neovide_cursor_animation_length=0
+let g:neovide_cursor_animation_length=0.02
 let g:neovide_cursor_trail_length=0
 let g:neovide_no_idle=v:false
 let g:neovide_confirm_quit=v:true
-let g:neovide_refresh_rate=60
 let g:neovide_remember_window_size=v:true
-let g:neovide_scroll_animation_length=0.1
+let g:neovide_scroll_animation_length=0.15
+let g:neovide_cursor_animate_command_line = v:false
+let g:neovide_refresh_rate=60
+let g:neovide_no_idle = v:true
+
 
 set mouse=a
 set cursorline
@@ -63,5 +77,5 @@ set wildmenu
 set linebreak
 set ttyfast  " speedy scrolling
 
-colorscheme gruvbox
+colorscheme monokai-pro-default
 

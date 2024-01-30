@@ -11,7 +11,7 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
-    
+    vim.opt.signcolumn = "yes"  -- Always show the signcolumn, otherwise it would shift the text each time diagnostics appear/become resolved.
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf }
