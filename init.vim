@@ -1,9 +1,23 @@
+" vim settings
 set nocompatible
+set termguicolors
+
 filetype plugin indent on
 syntax on
+set scrolloff=8
+
+" set key mappings for vim commands
+imap jj <Esc>
+let mapleader = " "
+nnoremap <leader>pv :Explore<CR>
+nnoremap <leader>h :noh<CR>
 
 call plug#begin()
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'overcache/NeoSolarized'
 Plug 'loctvl842/monokai-pro.nvim'
+Plug 'rebelot/kanagawa.nvim'
+Plug 'rose-pine/neovim'
 Plug 'morhetz/gruvbox'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'github/copilot.vim'
@@ -11,12 +25,15 @@ Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
 Plug 'thaerkh/vim-indentguides'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'jpalardy/vim-slime'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdtree'
 Plug 'frazrepo/vim-rainbow'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'lervag/vimtex'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
 Plug 'psf/black', { 'branch': 'stable' }
@@ -60,7 +77,6 @@ let g:neovide_cursor_animate_command_line = v:false
 let g:neovide_refresh_rate=60
 let g:neovide_no_idle = v:true
 
-
 set mouse=a
 set cursorline
 set nu " line numbers
@@ -77,5 +93,4 @@ set wildmenu
 set linebreak
 set ttyfast  " speedy scrolling
 
-colorscheme monokai-pro-default
-
+colorscheme NeoSolarized
