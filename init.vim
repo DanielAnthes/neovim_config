@@ -13,8 +13,9 @@ nnoremap <leader>pv :Explore<CR>
 nnoremap <leader>h :noh<CR>
 
 call plug#begin()
+Plug 'tpope/vim-fugitive'
+Plug 'ishan9299/nvim-solarized-lua'
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'overcache/NeoSolarized'
 Plug 'loctvl842/monokai-pro.nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'rose-pine/neovim'
@@ -29,7 +30,6 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'jpalardy/vim-slime'
 Plug 'tpope/vim-surround'
-Plug 'preservim/nerdtree'
 Plug 'frazrepo/vim-rainbow'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter'
@@ -63,7 +63,11 @@ let g:slime_default_config = {
             \ 'socket_name': get(split($TMUX, ','), 0),
             \ 'target_pane': '{top-right}' }
 let g:slime_dont_ask_default = 1
-let NERDTreeQuitOnOpen=1
+
+" terminal settings
+tnoremap <Esc> <C-\><C-n>  " exit terminal mode with escape
+autocmd TermOpen * setlocal nonumber norelativenumber  " no line numbers in terminal
+
 
 " GUI options especially for neovide 
 set guifont=Monaco:h14
@@ -93,4 +97,5 @@ set wildmenu
 set linebreak
 set ttyfast  " speedy scrolling
 
-colorscheme NeoSolarized
+set background=dark
+colorscheme monokai-pro
