@@ -49,6 +49,10 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
+" copilot
+nnoremap  <leader>ce :Copilot enable<CR>
+nnoremap  <leader>cd :Copilot disable<CR>
+
 augroup black_on_save
   autocmd!
   autocmd BufWritePre *.py Black
@@ -63,6 +67,7 @@ let g:slime_default_config = {
             \ 'socket_name': get(split($TMUX, ','), 0),
             \ 'target_pane': '{top-right}' }
 let g:slime_dont_ask_default = 1
+let g:slime_paste_filetype_blacklist = {}
 
 " terminal settings
 tnoremap <Esc> <C-\><C-n>  " exit terminal mode with escape
@@ -98,4 +103,4 @@ set linebreak
 set ttyfast  " speedy scrolling
 
 set background=dark
-colorscheme monokai-pro
+colorscheme rose-pine
