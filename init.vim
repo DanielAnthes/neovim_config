@@ -1,6 +1,10 @@
 " vim settings
 set nocompatible
 set termguicolors
+set cmdheight=0  " hide commandline when not used
+
+" relative line numbers
+set number
 
 filetype plugin indent on
 syntax on
@@ -13,9 +17,19 @@ nnoremap <leader>pv :Explore<CR>
 nnoremap <leader>h :noh<CR>
 
 call plug#begin()
+Plug 'hoob3rt/lualine.nvim'
+Plug 'smartpde/telescope-recent-files'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'sainnhe/gruvbox-material'
+Plug 'tjdevries/colorbuddy.nvim'
+Plug 'lalitmee/cobalt2.nvim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'yorickpeterse/vim-paper'
+Plug 'Mofiqul/vscode.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'ishan9299/nvim-solarized-lua'
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'loctvl842/monokai-pro.nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'rose-pine/neovim'
@@ -61,7 +75,7 @@ augroup end
 let g:black_use_virtualenv = 0
 let g:rainbow_active = 0
 let g:ipython_cell_cell_command = "%paste"
-let g:python3_host_prog='/Users/daniel/miniconda3/envs/nvim/bin/python'
+let g:python3_host_prog='/Users/danthes/miniconda3/envs/nvim/bin/python'
 let g:slime_target = "tmux"
 let g:slime_default_config = {
             \ 'socket_name': get(split($TMUX, ','), 0),
@@ -75,7 +89,6 @@ autocmd TermOpen * setlocal nonumber norelativenumber  " no line numbers in term
 
 
 " GUI options especially for neovide 
-set guifont=Monaco:h14
 let g:neovide_cursor_animation_length=0.02
 let g:neovide_cursor_trail_length=0
 let g:neovide_no_idle=v:false
@@ -83,8 +96,9 @@ let g:neovide_confirm_quit=v:true
 let g:neovide_remember_window_size=v:true
 let g:neovide_scroll_animation_length=0.15
 let g:neovide_cursor_animate_command_line = v:false
-let g:neovide_refresh_rate=60
+let g:neovide_refresh_rate=30
 let g:neovide_no_idle = v:true
+let g:neovide_transparency = 1
 
 set mouse=a
 set cursorline
@@ -103,4 +117,8 @@ set linebreak
 set ttyfast  " speedy scrolling
 
 set background=dark
-colorscheme rose-pine
+let g:gruvbox_material_background = 'medium'
+let g:gruvbox_material_foreground = 'material'
+let g:gruvbox_material_better_performance = 1
+colorscheme gruvbox-material
+
